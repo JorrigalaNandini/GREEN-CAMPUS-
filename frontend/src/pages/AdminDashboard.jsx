@@ -157,7 +157,7 @@ const filteredIssues = issues.filter((issue) => {
     matchesCategory
   );
 });
-console.log(filteredIssue);
+console.log(filteredIssues);
   return (
     <MainLayout>
       <div className="min-h-screen bg-green-50 p-6">
