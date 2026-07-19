@@ -190,27 +190,40 @@ const reportIssue = async (req, res) => {
 // ===============================
 const getAllIssues = async (req, res) => {
   try {
-
     console.log("Model collection:", Issue.collection.name);
 
     const issues = await Issue.find({});
 
-    console.log("Fetched issues:", issues.length);
+    const today = new Date();
+
+    issues.forEach((issue) => {
+      if (issue.status !== "Resolved") {
+        const daysPending = Math.floor(
+          (today - new Date(issue.createdAt)) / (1000 * 60 * 60 * 24)
+        );
+
+        if (daysPending >= 7) {
+          issue.priorityLevel = "High";
+        } else if (daysPending >= 3) {
+          issue.priorityLevel = "Medium";
+        } else {
+          issue.priorityLevel = "Low";
+        }
+      }
+    });
 
     res.status(200).json({
       success: true,
-      issues
+      issues,
     });
 
   } catch (error) {
-
     console.log("GET ISSUES ERROR:", error.message);
 
     res.status(500).json({
-      success:false,
-      message:error.message
+      success: false,
+      message: error.message,
     });
-
   }
 };
 const today = new Date();
