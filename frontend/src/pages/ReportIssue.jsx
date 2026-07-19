@@ -6,6 +6,7 @@ import MainLayout from "../layouts/MainLayout";
 function ReportIssue() {
 
   const [image, setImage] = useState(null);
+  const [title,setTitle]=useState("");
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
 
@@ -124,7 +125,7 @@ function ReportIssue() {
   const handleSubmit = async () => {
 
 
-    if(!image || !category || !location){
+    if(!image || !title ||!category || !location){
 
       alert("Please fill all details");
       return;
@@ -143,6 +144,7 @@ function ReportIssue() {
 
 
       formData.append("image", image);
+      formData.append("title",title);
       formData.append("category", category);
       formData.append("location", location);
 
@@ -246,7 +248,17 @@ function ReportIssue() {
 
           />
 
+        <label className="font-semibold">
+  Issue Title
+</label>
 
+<input
+  type="text"
+  placeholder="Example: Overflowing Dustbin"
+  value={title}
+  onChange={(e)=>setTitle(e.target.value)}
+  className="w-full border rounded-lg p-3 mb-5"
+/>
 
 
 

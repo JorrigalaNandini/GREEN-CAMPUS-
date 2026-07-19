@@ -12,7 +12,7 @@ const reportIssue = async (req, res) => {
 
   try {
 
-    const { category, location } = req.body;
+    const { title ,category, location } = req.body;
 
     const image = req.file ? req.file.filename : "";
 
