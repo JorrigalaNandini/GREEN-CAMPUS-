@@ -14,7 +14,7 @@ function Profile() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5000/api/auth/profile",
+        "https://green-campus-1.onrender.com/api/auth/profile",
         {
           headers: {
             Authorization: `Bearer ${token}`,

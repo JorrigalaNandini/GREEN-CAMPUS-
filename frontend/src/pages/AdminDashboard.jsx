@@ -32,7 +32,7 @@ function AdminDashboard() {
     try {
 
       const response = await axios.get(
-        "http://localhost:5000/api/issues"
+        "https://green-campus-1.onrender.com/api/issues"
       );
 
       setIssues(response.data.issues);
@@ -48,7 +48,7 @@ function AdminDashboard() {
     const updateStatus = async (id) => {
     try {
         await axios.put(
-        `http://localhost:5000/api/issues/${id}`,
+        `https://green-campus-1.onrender.com/api/issues/${id}`,
         {
             status: "Resolved"
         }

@@ -12,7 +12,7 @@ function Analytics() {
       try {
 
         const response = await axios.get(
-          "http://localhost:5000/api/issues"
+          "https://green-campus-1.onrender.com/api/issues"
         );
 
         setIssues(response.data.issues);
