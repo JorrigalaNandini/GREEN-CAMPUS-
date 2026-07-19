@@ -226,42 +226,6 @@ const getAllIssues = async (req, res) => {
     });
   }
 };
-const today = new Date();
-
-issues.forEach((issue) => {
-
-  if(issue.status !== "Resolved") {
-
-    const daysPending = Math.floor(
-      (today - issue.createdAt) / (1000 * 60 * 60 * 24)
-    );
-
-    if(daysPending >= 7){
-      issue.priorityLevel = "High";
-    }
-    else if(daysPending >= 3){
-      issue.priorityLevel = "Medium";
-    }
-    else{
-      issue.priorityLevel = "Low";
-    }
-
-  }
-
-});
-res.status(200).json({
-  success:true,
-  issues
-});
-
-
-
-
-
-
-
-
-
 
 
 // ===============================
