@@ -78,7 +78,7 @@ const reportIssue = async (req, res) => {
     // Create Issue
 
     const issue = await Issue.create({
-
+        title,
       category,
 
       location,

@@ -139,9 +139,8 @@ const barData = {
 };
 const filteredIssues = issues.filter((issue) => {
   const matchesSearch =
-    issue.title.toLowerCase().includes(search.toLowerCase()) ||
-    issue.location.toLowerCase().includes(search.toLowerCase());
-
+    (issue.title || "").toLowerCase().includes(search.toLowerCase()) ||
+    (issue.location || "").toLowerCase().includes(search.toLowerCase());
   const matchesStatus =
     statusFilter === "All" || issue.status === statusFilter;
 
@@ -158,6 +157,7 @@ const filteredIssues = issues.filter((issue) => {
     matchesCategory
   );
 });
+console.log(filteredIssue);
   return (
     <MainLayout>
       <div className="min-h-screen bg-green-50 p-6">
