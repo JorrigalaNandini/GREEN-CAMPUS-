@@ -38,7 +38,16 @@ const issueSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
+    coordinates: {
+  latitude: {
+    type: Number,
+    required: true,
+  },
+  longitude: {
+    type: Number,
+    required: true,
+  },
+},
     image: {
       type: String,
       default: "",
@@ -76,9 +85,21 @@ const issueSchema = new mongoose.Schema(
 
 
     reportedBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User",
+},
+
+reportedUsers: [
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+],
+
+reportCount: {
+  type: Number,
+  default: 1,
+},
 
   },
 

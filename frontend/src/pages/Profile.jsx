@@ -75,13 +75,17 @@ function Profile() {
               <strong>Role:</strong> {user.role}
             </div>
 
-            <div className="border rounded-lg p-4">
-              <strong>Eco Points:</strong> {user.ecoPoints}
-            </div>
+            {user.role !== "admin" && (
+  <>
+    <div className="border rounded-lg p-4">
+      <strong>Eco Points:</strong> {user.ecoPoints}
+    </div>
 
-            <div className="border rounded-lg p-4">
-              <strong>Badge:</strong> {user.badge}
-            </div>
+    <div className="border rounded-lg p-4">
+      <strong>Badge:</strong> {user.badge}
+    </div>
+  </>
+)}
 
           </div>
         </div>

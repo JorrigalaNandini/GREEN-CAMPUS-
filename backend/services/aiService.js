@@ -111,7 +111,6 @@ const predictSeverity = async (category) => {
 
   return severity;
 
-
 };
 
 
