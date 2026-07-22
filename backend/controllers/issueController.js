@@ -105,6 +105,10 @@ const reportIssue = async (req, res) => {
 const normalizedCategory = normalizeText(category);
 const normalizedLocation = normalizeText(location);
 const normalizedTitle = normalizeText(title);
+const existingIssues = await Issue.find({
+  status: { $ne: "Resolved" }
+});
+
 const existingIssue = existingIssues.find((issue) => {
 
   const oldTitle = normalizeText(issue.title);
@@ -116,10 +120,12 @@ const existingIssue = existingIssues.find((issue) => {
   console.log("OLD LOCATION:", oldLocation);
   console.log("NEW LOCATION:", normalizedLocation);
 
-  return (
-    oldTitle === normalizedTitle &&
-    oldLocation === normalizedLocation
-  );
+ const oldCategory = normalizeText(issue.category);
+
+return (
+  oldCategory === normalizedCategory &&
+  oldLocation === normalizedLocation
+);
 
 });
 
@@ -157,17 +163,7 @@ if (existingIssue) {
 
 
 
-    if(existingIssue){
-
-      return res.status(400).json({
-
-        success:false,
-
-        message:"Same issue already submitted"
-
-      });
-
-    }
+    
 
 
 
@@ -205,6 +201,7 @@ const issue = await Issue.create({
 
   status: "Pending",
 });
+console.log("New issue created:", issue);
 
 
 
