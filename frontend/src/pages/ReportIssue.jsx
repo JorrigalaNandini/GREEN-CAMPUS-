@@ -217,7 +217,7 @@ const dataURLtoFile = (dataurl, filename) => {
 
       const token = localStorage.getItem("token");
 
-      console.log("Coordinates:", latitude, longitude);
+      //console.log("Coordinates:", latitude, longitude);
 
       const response = await axios.post(
 
@@ -690,14 +690,13 @@ disabled:opacity-50
           {result?.message && (
 
 <div
- className="
+ className={`
  fixed
  top-5
  right-3
  left-3
  sm:left-auto
  sm:right-5
- bg-red-500
  text-white
  px-5
  py-3
@@ -706,7 +705,12 @@ disabled:opacity-50
  text-center
  animate-pulse
  z-50
- "
+ ${
+   result.message.includes("already been reported")
+   ? "bg-red-500"
+   : "bg-green-500"
+ }
+ `}
 >
 
 {result.message}
