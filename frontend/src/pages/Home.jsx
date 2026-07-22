@@ -155,7 +155,7 @@ function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-              {issues.slice(0,5).map((issue)=>(
+              {issues.map((issue)=>(
 
                 <div
                   key={issue._id}
